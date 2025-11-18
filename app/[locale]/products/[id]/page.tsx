@@ -1,3 +1,4 @@
+import { setRequestLocale } from 'next-intl/server';
 import { ProductDetailPage } from '@/pages/product-detail';
 
 interface ProductPageProps {
@@ -8,6 +9,7 @@ interface ProductPageProps {
 }
 
 export default function ProductPage({ params }: ProductPageProps) {
+  setRequestLocale(params.locale);
   const productId = parseInt(params.id, 10);
 
   return <ProductDetailPage productId={productId} />;
