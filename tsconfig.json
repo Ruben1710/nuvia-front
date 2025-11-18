@@ -25,7 +25,8 @@
       "@/entities/*": ["./entities/*"],
       "@/features/*": ["./features/*"],
       "@/widgets/*": ["./widgets/*"],
-      "@/pages/*": ["./pages/*"]
+      "@/views/*": ["./views/*"],
+      "@/pages/*": ["./views/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

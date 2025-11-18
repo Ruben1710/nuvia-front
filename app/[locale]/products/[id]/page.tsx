@@ -1,5 +1,5 @@
 import { setRequestLocale } from 'next-intl/server';
-import { ProductDetailPage } from '@/pages/product-detail';
+import { ProductDetailPage } from '@/views/product-detail';
 
 interface ProductPageProps {
   params: {
