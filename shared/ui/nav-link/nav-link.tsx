@@ -8,9 +8,10 @@ interface NavLinkProps {
   href: string;
   children: React.ReactNode;
   className?: string;
+  onClick?: () => void;
 }
 
-export function NavLink({ href, children, className = '' }: NavLinkProps) {
+export function NavLink({ href, children, className = '', onClick }: NavLinkProps) {
   const locale = useLocale();
   const pathname = usePathname();
   const isActive = pathname === `/${locale}${href}` || pathname === `/${locale}${href}/`;
@@ -19,6 +20,7 @@ export function NavLink({ href, children, className = '' }: NavLinkProps) {
     <Link
       href={`/${locale}${href}`}
       className={`${className} ${isActive ? 'font-bold text-white border-b-2 border-white' : ''}`}
+      onClick={onClick}
     >
       {children}
     </Link>

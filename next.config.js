@@ -4,6 +4,7 @@ const withNextIntl = createNextIntlPlugin('./i18n.ts');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  pageExtensions: ['page.tsx', 'page.ts', 'tsx', 'ts'],
   images: {
     remotePatterns: [
       {

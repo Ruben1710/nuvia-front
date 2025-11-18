@@ -256,3 +256,5 @@ export function WorksPage() {
   );
 }
 
+export default WorksPage;
+

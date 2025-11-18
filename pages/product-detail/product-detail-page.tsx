@@ -286,3 +286,5 @@ export function ProductDetailPage({ productId }: ProductDetailPageProps) {
   );
 }
 
+export default ProductDetailPage;
+

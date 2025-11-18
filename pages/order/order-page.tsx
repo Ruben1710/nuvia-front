@@ -532,3 +532,5 @@ export function OrderPage() {
     </div>
   );
 }
+
+export default OrderPage;

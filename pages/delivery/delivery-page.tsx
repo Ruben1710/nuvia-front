@@ -275,3 +275,5 @@ export function DeliveryPage() {
   );
 }
 
+export default DeliveryPage;
+
