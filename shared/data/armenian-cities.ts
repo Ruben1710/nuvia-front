@@ -1,0 +1,180 @@
+// Список армянских городов с почтовыми отделениями
+export interface ArmenianCity {
+  id: string;
+  nameRu: string;
+  nameEn: string;
+  nameArm: string;
+  hasPostOffice: boolean;
+  postOffices?: string[]; // Номера почтовых отделений
+}
+
+export const armenianCities: ArmenianCity[] = [
+  {
+    id: 'vanadzor',
+    nameRu: 'Ванадзор',
+    nameEn: 'Vanadzor',
+    nameArm: 'Վանաձոր',
+    hasPostOffice: false, // Самовывоз, не нужен номер почтового отделения
+  },
+  {
+    id: 'yerevan',
+    nameRu: 'Ереван',
+    nameEn: 'Yerevan',
+    nameArm: 'Երևան',
+    hasPostOffice: true,
+    postOffices: ['0001', '0002', '0003', '0004', '0005', '0006', '0007', '0008', '0009', '0010', '0011', '0012', '0013', '0014', '0015', '0016', '0017', '0018', '0019', '0020', '0021', '0022', '0023', '0024', '0025', '0026', '0027', '0028', '0029', '0030', '0031', '0032', '0033', '0034', '0035', '0036', '0037', '0038', '0039', '0040', '0041', '0042', '0043', '0044', '0045', '0046', '0047', '0048', '0049', '0050'],
+  },
+  {
+    id: 'gyumri',
+    nameRu: 'Гюмри',
+    nameEn: 'Gyumri',
+    nameArm: 'Գյումրի',
+    hasPostOffice: true,
+    postOffices: ['3101', '3102', '3103', '3104', '3105'],
+  },
+  {
+    id: 'kapan',
+    nameRu: 'Капан',
+    nameEn: 'Kapan',
+    nameArm: 'Կապան',
+    hasPostOffice: true,
+    postOffices: ['3301', '3302'],
+  },
+  {
+    id: 'goris',
+    nameRu: 'Горис',
+    nameEn: 'Goris',
+    nameArm: 'Գորիս',
+    hasPostOffice: true,
+    postOffices: ['3201', '3202'],
+  },
+  {
+    id: 'sevan',
+    nameRu: 'Севан',
+    nameEn: 'Sevan',
+    nameArm: 'Սևան',
+    hasPostOffice: true,
+    postOffices: ['1501', '1502'],
+  },
+  {
+    id: 'dilijan',
+    nameRu: 'Дилижан',
+    nameEn: 'Dilijan',
+    nameArm: 'Դիլիջան',
+    hasPostOffice: true,
+    postOffices: ['3901'],
+  },
+  {
+    id: 'ijevan',
+    nameRu: 'Иджеван',
+    nameEn: 'Ijevan',
+    nameArm: 'Իջևան',
+    hasPostOffice: true,
+    postOffices: ['4001'],
+  },
+  {
+    id: 'artashat',
+    nameRu: 'Арташат',
+    nameEn: 'Artashat',
+    nameArm: 'Արտաշատ',
+    hasPostOffice: true,
+    postOffices: ['0701', '0702'],
+  },
+  {
+    id: 'armavir',
+    nameRu: 'Армавир',
+    nameEn: 'Armavir',
+    nameArm: 'Արմավիր',
+    hasPostOffice: true,
+    postOffices: ['0901', '0902'],
+  },
+  {
+    id: 'ashtarak',
+    nameRu: 'Аштарак',
+    nameEn: 'Ashtarak',
+    nameArm: 'Աշտարակ',
+    hasPostOffice: true,
+    postOffices: ['0201'],
+  },
+  {
+    id: 'abovyan',
+    nameRu: 'Абовян',
+    nameEn: 'Abovyan',
+    nameArm: 'Աբովյան',
+    hasPostOffice: true,
+    postOffices: ['2201', '2202'],
+  },
+  {
+    id: 'hrazdan',
+    nameRu: 'Раздан',
+    nameEn: 'Hrazdan',
+    nameArm: 'Հրազդան',
+    hasPostOffice: true,
+    postOffices: ['2301', '2302'],
+  },
+  {
+    id: 'spitak',
+    nameRu: 'Спитак',
+    nameEn: 'Spitak',
+    nameArm: 'Սպիտակ',
+    hasPostOffice: true,
+    postOffices: ['1801'],
+  },
+  {
+    id: 'alaverdi',
+    nameRu: 'Алаверди',
+    nameEn: 'Alaverdi',
+    nameArm: 'Ալավերդի',
+    hasPostOffice: true,
+    postOffices: ['1701'],
+  },
+  {
+    id: 'stepanavan',
+    nameRu: 'Степанаван',
+    nameEn: 'Stepanavan',
+    nameArm: 'Ստեփանավան',
+    hasPostOffice: true,
+    postOffices: ['1901'],
+  },
+  {
+    id: 'martuni',
+    nameRu: 'Мартуни',
+    nameEn: 'Martuni',
+    nameArm: 'Մարտունի',
+    hasPostOffice: true,
+    postOffices: ['1401'],
+  },
+  {
+    id: 'vardenis',
+    nameRu: 'Варденис',
+    nameEn: 'Vardenis',
+    nameArm: 'Վարդենիս',
+    hasPostOffice: true,
+    postOffices: ['1411'],
+  },
+  {
+    id: 'gavar',
+    nameRu: 'Гавар',
+    nameEn: 'Gavar',
+    nameArm: 'Գավառ',
+    hasPostOffice: true,
+    postOffices: ['1201'],
+  },
+  {
+    id: 'masis',
+    nameRu: 'Масис',
+    nameEn: 'Masis',
+    nameArm: 'Մասիս',
+    hasPostOffice: true,
+    postOffices: ['0801'],
+  },
+  {
+    id: 'ararat',
+    nameRu: 'Арарат',
+    nameEn: 'Ararat',
+    nameArm: 'Արարատ',
+    hasPostOffice: true,
+    postOffices: ['0601'],
+  },
+];
+

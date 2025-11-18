@@ -1,0 +1,172 @@
+{
+  "nav": {
+    "home": "Home",
+    "gallery": "Our Works",
+    "products": "Products",
+    "contacts": "Contacts",
+    "delivery": "Delivery"
+  },
+  "home": {
+    "title": "Welcome",
+    "description": "Welcome to our website",
+    "welcome": "Welcome",
+    "slogan": "We print your design on any items",
+    "orderButton": "Order"
+  },
+  "slider": {
+    "orderButton": "Order",
+    "mugs": {
+      "title": "Mugs",
+      "description": "Custom mug with your design"
+    },
+    "tshirts": {
+      "title": "T-Shirts",
+      "description": "Clothing printing"
+    },
+    "badges": {
+      "title": "Metal Business Cards / Badges",
+      "description": "Metal business cards with engraving"
+    },
+    "gifts": {
+      "title": "Gift Sets",
+      "description": "Gift ideas for any occasion"
+    },
+    "souvenirs": {
+      "title": "Photo Frames, Pillows, Magnets",
+      "description": "Souvenirs wholesale and retail"
+    }
+  },
+  "gallery": {
+    "title": "Gallery",
+    "description": "Our photo gallery"
+  },
+  "works": {
+    "title": "Our Works",
+    "all": "All",
+    "details": "Details",
+    "viewProduct": "View Product",
+    "noImages": "No images"
+  },
+  "products": {
+    "title": "Products",
+    "description": "Our products",
+    "all": "All",
+    "noProducts": "No products",
+    "orderButton": "Order",
+    "addToCart": "Add to Cart",
+    "category": "Category",
+    "productId": "Product ID",
+    "notFound": "Product Not Found",
+    "productNotFound": "The product you are looking for does not exist.",
+    "size": "Size",
+    "printSize": "Print Size",
+    "material": "Material",
+    "materialFromUs": "Material from us",
+    "photoEdit": "Photo editing",
+    "photoEditHelp": "If you choose photo enhancement: we adjust colors and lighting, improve sharpness, remove imperfections, replace the background if needed, smooth skin tones, and make the image cleaner and more professional.\n\nIf enhancement isn't needed: we apply only basic fixes to ensure the photo prints well.",
+    "model": "Model",
+    "selectSize": "Select size",
+    "selectPrintSize": "Select print size",
+    "selectModel": "Select model",
+    "productDescription": "Description",
+    "backToProducts": "Back to Products",
+    "specialNotes": "Special Notes",
+    "specialNotesPlaceholder": "Add any special instructions or notes for your order..."
+  },
+  "contacts": {
+    "title": "Contacts",
+    "description": "Contact us",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "phoneOptional": "Phone (optional)",
+    "message": "Message",
+    "send": "Send",
+    "ourEmail": "Our Email",
+    "ourPhone": "Our Phone",
+    "address": "Address",
+    "addressText": "Vanadzor, Tigran Mets 18, room 323",
+    "socialNetworks": "Social Networks",
+    "instagram": "Instagram",
+    "facebook": "Facebook",
+    "nameRequired": "Name is required",
+    "nameInvalid": "Name can only contain letters and spaces",
+    "emailRequired": "Email is required",
+    "emailInvalid": "Please enter a valid email address",
+    "phoneInvalid": "Please enter a valid phone number",
+    "messageRequired": "Message is required",
+    "sending": "Sending...",
+    "sendSuccess": "Message sent successfully! We will contact you soon.",
+    "sendError": "Failed to send message. Please try again later."
+  },
+  "order": {
+    "title": "Checkout",
+    "description": "Fill out the form to place an order",
+    "name": "Name",
+    "nameRequired": "Name is required",
+    "nameInvalid": "Name can only contain letters and spaces",
+    "phone": "Phone",
+    "phoneRequired": "Phone is required",
+    "phoneInvalid": "Please enter a valid phone number",
+    "email": "Email",
+    "emailRequired": "Email is required",
+    "emailInvalid": "Please enter a valid email address",
+    "city": "City",
+    "cityRequired": "Please select a city",
+    "postOffice": "Post Office Number",
+    "postOfficeRequired": "Post office number is required",
+    "postOfficeInvalid": "Please select a post office number",
+    "submit": "Place Order",
+    "submitting": "Submitting...",
+    "success": "Order placed successfully! We will contact you soon.",
+    "error": "Failed to place order. Please try again later.",
+    "cartEmpty": "Cart is empty",
+    "cartEmptyDescription": "Add items to cart before placing an order",
+    "goToProducts": "Go to Products",
+    "orderItems": "Order Items",
+    "total": "Total",
+    "increase": "Increase quantity",
+    "decrease": "Decrease quantity",
+    "remove": "Remove item",
+    "selectAll": "Select all",
+    "deselectAll": "Deselect all",
+    "selectedItems": "Selected items",
+    "removeSelected": "Remove selected",
+    "selectedTotal": "Total (selected)",
+    "quantity": "Quantity"
+  },
+  "delivery": {
+    "title": "Delivery Information",
+    "subtitle": "How we deliver your orders",
+    "haypost": "Delivery via HayPost",
+    "haypostDescription": "Delivery is available via HayPost",
+    "office": "Pick up from office",
+    "officeDescription": "You can pick up your order from our office at:",
+    "address": "Vanadzor, Tigran Mets 18, room 323",
+    "priceTitle": "Delivery Price",
+    "priceText": "The price depends on the type and size of the product.",
+    "videoTitle": "Order Video",
+    "videoText": "Before shipping, we provide you with a video of your order so you can confirm that everything is correct.",
+    "noReturns": "No Returns",
+    "noReturnsText": "Returns are not available.",
+    "orderProcess": "Order Process",
+    "stepOrder": "Order",
+    "stepOrderDesc": "Place your order",
+    "stepProduction": "Production",
+    "stepProductionDesc": "We create your product",
+    "stepVideo": "Video",
+    "stepVideoDesc": "We send you a video",
+    "stepDelivery": "Delivery",
+    "stepDeliveryDesc": "We deliver to you"
+  },
+  "cart": {
+    "title": "Shopping Cart",
+    "empty": "No items in the cart.",
+    "total": "Total",
+    "remove": "Remove",
+    "selectProducts": "SELECT PRODUCTS",
+    "continue": "CONTINUE",
+    "checkout": "CHECKOUT"
+  }
+}
+
