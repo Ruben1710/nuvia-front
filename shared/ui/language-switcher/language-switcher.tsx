@@ -42,6 +42,7 @@ export function LanguageSwitcher() {
   }, [isOpen]);
 
   const switchLocale = (newLocale: Locale) => {
+    if (!pathname) return;
     const pathWithoutLocale = pathname.replace(`/${locale}`, '');
     router.push(`/${newLocale}${pathWithoutLocale}`);
     setIsOpen(false);

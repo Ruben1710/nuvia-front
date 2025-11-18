@@ -101,7 +101,7 @@ export function ProductDetailPage({ productId }: ProductDetailPageProps) {
     if (product) {
       setCurrentPrice(product.price);
     }
-  }, [product?.id]); // Только при смене продукта
+  }, [product]); // Только при смене продукта
 
   if (loading) {
     return (
