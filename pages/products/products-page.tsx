@@ -26,9 +26,11 @@ export function ProductsPage() {
 
   // Читаем категорию из URL при загрузке страницы
   useEffect(() => {
-    const categoryFromUrl = searchParams.get('category');
-    if (categoryFromUrl) {
-      setSelectedCategory(categoryFromUrl);
+    if (searchParams) {
+      const categoryFromUrl = searchParams.get('category');
+      if (categoryFromUrl) {
+        setSelectedCategory(categoryFromUrl);
+      }
     }
   }, [searchParams]);
 
