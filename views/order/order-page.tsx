@@ -250,7 +250,7 @@ export function OrderPage() {
   // Если корзина пуста, показываем сообщение с кнопкой
   if (items.length === 0 && !submitStatus) {
     return (
-      <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-16">
+      <div className="container mx-auto px-3 min-[375px]:px-4 sm:px-6 lg:px-8 xl:px-12 pt-16 min-[375px]:pt-20 sm:pt-24 md:pt-28 lg:pt-32 pb-8 sm:pb-16">
         <div className="max-w-2xl mx-auto text-center">
           <FaShoppingCart className="mx-auto text-6xl text-gray-400 mb-4" />
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 text-white">
@@ -271,7 +271,7 @@ export function OrderPage() {
   }
 
   return (
-    <div className="container mx-auto px-3 min-[375px]:px-4 sm:px-6 lg:px-8 xl:px-12 py-6 min-[375px]:py-8 sm:py-12 md:py-16 lg:py-20">
+    <div className="container mx-auto px-3 min-[375px]:px-4 sm:px-6 lg:px-8 xl:px-12 pt-16 min-[375px]:pt-20 sm:pt-24 md:pt-28 lg:pt-32 pb-6 min-[375px]:pb-8 sm:pb-12 md:pb-16 lg:pb-20">
       <div className="max-w-6xl mx-auto">
         <h1 className="text-xl min-[375px]:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-2.5 min-[375px]:mb-3 sm:mb-4 lg:mb-6 text-white text-center px-2">
           {t('title')}

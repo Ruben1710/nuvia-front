@@ -5,10 +5,6 @@ const withNextIntl = createNextIntlPlugin('./i18n.ts');
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   pageExtensions: ['page.tsx', 'page.ts', 'tsx', 'ts'],
-  // Исключаем папку pages из сканирования, так как используем app router
-  experimental: {
-    appDir: true,
-  },
   images: {
     remotePatterns: [
       {
@@ -32,6 +28,15 @@ const nextConfig = {
         hostname: '*.s3.amazonaws.com',
       },
     ],
+  },
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+      };
+    }
+    return config;
   },
 };
 

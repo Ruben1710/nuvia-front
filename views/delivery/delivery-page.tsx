@@ -16,7 +16,7 @@ export function DeliveryPage() {
   const t = useTranslations('delivery');
 
   return (
-    <div className="container mx-auto px-3 min-[375px]:px-4 sm:px-6 lg:px-8 xl:px-12 py-6 min-[375px]:py-8 sm:py-12 md:py-16 lg:py-20">
+    <div className="container mx-auto px-3 min-[375px]:px-4 sm:px-6 lg:px-8 xl:px-12 pt-16 min-[375px]:pt-20 sm:pt-24 md:pt-28 lg:pt-32 pb-6 min-[375px]:pb-8 sm:pb-12 md:pb-16 lg:pb-20">
       {/* Header */}
       <div className="text-center mb-8 min-[375px]:mb-10 sm:mb-12 md:mb-16 lg:mb-20">
         <h1 className="text-2xl min-[375px]:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-3 min-[375px]:mb-4 lg:mb-6 animate-fade-in px-2">

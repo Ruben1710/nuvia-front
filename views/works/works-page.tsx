@@ -1,10 +1,11 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import Image from 'next/image';
 import { useWorksStore } from '@/shared/store/worksStore';
 import { useCategoriesStore } from '@/shared/store/categoriesStore';
+import { CategoryFilter } from '@/shared/ui/category-filter';
 import { X, ExternalLink } from 'lucide-react';
 
 export function WorksPage() {
@@ -12,7 +13,7 @@ export function WorksPage() {
   const locale = useLocale();
   const { works, loading, fetchWorks } = useWorksStore();
   const { categories, fetchCategories } = useCategoriesStore();
-  const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedImage, setSelectedImage] = useState<{
     image: string;
     name: string;
@@ -21,13 +22,9 @@ export function WorksPage() {
   } | null>(null);
 
   useEffect(() => {
-    if (works.length === 0) {
-      fetchWorks();
-    }
-    if (categories.length === 0) {
-      fetchCategories();
-    }
-  }, [works.length, categories.length, fetchWorks, fetchCategories]);
+    fetchWorks();
+    fetchCategories();
+  }, [fetchWorks, fetchCategories]);
 
   // Получаем все изображения из работ
   const getAllImages = () => {
@@ -63,10 +60,7 @@ export function WorksPage() {
 
   const allImages = getAllImages();
   const filteredImages = selectedCategory
-    ? allImages.filter((img) => {
-        const category = categories.find((cat) => cat.id === selectedCategory);
-        return category && img.categorySlug === category.slug;
-      })
+    ? allImages.filter((img) => img.categorySlug === selectedCategory)
     : allImages;
 
   const handleImageClick = (image: typeof allImages[0]) => {
@@ -84,14 +78,14 @@ export function WorksPage() {
 
   if (loading) {
     return (
-      <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-16">
+      <div className="container mx-auto px-3 min-[375px]:px-4 sm:px-6 lg:px-8 xl:px-12 pt-16 min-[375px]:pt-20 sm:pt-24 md:pt-28 lg:pt-32 pb-8 sm:pb-16">
         <div className="text-white text-center">Загрузка...</div>
       </div>
     );
   }
 
   return (
-    <div className="container mx-auto px-3 min-[375px]:px-4 sm:px-6 lg:px-8 xl:px-12 py-6 min-[375px]:py-8 sm:py-12 md:py-16 lg:py-20">
+    <div className="container mx-auto px-3 min-[375px]:px-4 sm:px-6 lg:px-8 xl:px-12 pt-16 min-[375px]:pt-20 sm:pt-24 md:pt-28 lg:pt-32 pb-6 min-[375px]:pb-8 sm:pb-12 md:pb-16 lg:pb-20">
       {/* Header */}
       <div className="text-center mb-8 min-[375px]:mb-10 sm:mb-12 md:mb-16 lg:mb-20">
         <h1 className="text-2xl min-[375px]:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-3 min-[375px]:mb-4 lg:mb-6 animate-fade-in px-2">
@@ -100,36 +94,11 @@ export function WorksPage() {
       </div>
 
       {/* Category Filter */}
-      <div className="mb-6 min-[375px]:mb-8 sm:mb-12">
-        <div className="flex flex-wrap gap-2 min-[375px]:gap-3 sm:gap-4 justify-center px-2">
-          <button
-            onClick={() => setSelectedCategory(null)}
-            className={`px-3 min-[375px]:px-4 sm:px-6 py-1.5 min-[375px]:py-2 sm:py-3 rounded-lg font-semibold text-xs min-[375px]:text-sm sm:text-base transition-all duration-300 ${
-              selectedCategory === null
-                ? 'bg-white text-black hover:bg-gray-200 active:bg-gray-300'
-                : 'bg-gray-800 text-white hover:bg-gray-700 active:bg-gray-600'
-            }`}
-          >
-            {t('all')}
-          </button>
-          {categories.map((category) => {
-            const categoryName = locale === 'en' ? category.nameEn : locale === 'ru' ? category.nameRu : category.nameArm;
-            return (
-              <button
-                key={category.id}
-                onClick={() => setSelectedCategory(category.id)}
-                className={`px-3 min-[375px]:px-4 sm:px-6 py-1.5 min-[375px]:py-2 sm:py-3 rounded-lg font-semibold text-xs min-[375px]:text-sm sm:text-base transition-all duration-300 ${
-                  selectedCategory === category.id
-                    ? 'bg-white text-black hover:bg-gray-200 active:bg-gray-300'
-                    : 'bg-gray-800 text-white hover:bg-gray-700 active:bg-gray-600'
-                }`}
-              >
-                {categoryName}
-              </button>
-            );
-          })}
-        </div>
-      </div>
+      <CategoryFilter
+        categories={categories}
+        selectedCategory={selectedCategory}
+        onSelect={setSelectedCategory}
+      />
 
       {/* Masonry Grid */}
       {filteredImages.length === 0 ? (

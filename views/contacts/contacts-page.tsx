@@ -151,7 +151,7 @@ export function ContactsPage() {
   };
 
   return (
-    <div className="container mx-auto px-3 min-[375px]:px-4 sm:px-6 lg:px-8 xl:px-12 py-6 min-[375px]:py-8 sm:py-12 md:py-16 lg:py-20">
+    <div className="container mx-auto px-3 min-[375px]:px-4 sm:px-6 lg:px-8 xl:px-12 pt-16 min-[375px]:pt-20 sm:pt-24 md:pt-28 lg:pt-32 pb-6 min-[375px]:pb-8 sm:pb-12 md:pb-16 lg:pb-20">
       {/* Header */}
       <div className="text-center mb-8 min-[375px]:mb-10 sm:mb-12 md:mb-16 lg:mb-20">
         <h1 className="text-2xl min-[375px]:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-3 min-[375px]:mb-4 lg:mb-6 animate-fade-in px-2">
@@ -161,7 +161,7 @@ export function ContactsPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 min-[375px]:gap-6 sm:gap-8 md:gap-12 lg:gap-16 xl:gap-20">
         {/* Contact Form */}
-        <div className="bg-gray-900 rounded-lg min-[375px]:rounded-xl p-4 min-[375px]:p-5 sm:p-6 md:p-8 border border-gray-800 shadow-lg hover:shadow-white/10 transition-all duration-300 animate-slide-in-left">
+        <div className="bg-gray-900 rounded-lg min-[375px]:rounded-xl p-4 min-[375px]:p-5 sm:p-6 md:p-8 border border-gray-800 shadow-lg hover:shadow-white/10 transition-all duration-300 animate-slide-in-left order-2 lg:order-1">
           <h2 className="text-lg min-[375px]:text-xl sm:text-2xl font-bold text-white mb-4 min-[375px]:mb-5 sm:mb-6 flex items-center gap-1.5 min-[375px]:gap-2">
             <FaEnvelope className="text-blue-400 w-4 h-4 min-[375px]:w-5 min-[375px]:h-5" />
             {t('description')}
@@ -288,7 +288,7 @@ export function ContactsPage() {
         </div>
 
         {/* Contact Information */}
-        <div className="space-y-6 sm:space-y-8">
+        <div className="space-y-6 sm:space-y-8 order-1 lg:order-2">
           {/* Address Card */}
           <div className="bg-gray-900 rounded-xl p-6 sm:p-8 border border-gray-800 hover:border-white transition-all duration-300 hover:shadow-xl hover:shadow-white/10 animate-slide-in-right">
             <div className="flex items-start gap-4">

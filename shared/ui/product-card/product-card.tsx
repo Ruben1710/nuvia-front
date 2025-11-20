@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
 import { useLocale } from 'next-intl';
 import { useTranslations } from 'next-intl';
@@ -35,24 +34,20 @@ export function ProductCard({ product }: ProductCardProps) {
   const productDescription = product.description[locale as 'en' | 'ru' | 'arm'] || product.description.en;
 
   return (
-    <div className="bg-gray-900 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow border border-gray-800 h-full flex flex-col">
-      <div className="relative w-full h-48 min-[375px]:h-56 sm:h-64 md:h-72 lg:h-80 xl:h-96 bg-gradient-to-br from-gray-800 to-black aspect-square">
-        <div className="absolute inset-0 flex items-center justify-center opacity-30">
-          <div className="text-white text-2xl min-[375px]:text-3xl sm:text-4xl lg:text-5xl font-bold">NUVIA</div>
-        </div>
-        {product.image && (
-          <Image
+    <div className="bg-gray-900 rounded-lg overflow-hidden shadow-lg hover:shadow-xl border border-gray-800 w-full max-w-full flex flex-col hover:-translate-y-1 transition-all duration-300 cursor-pointer">
+      <div className="w-full aspect-[4/5] rounded-xl overflow-hidden bg-gray-900">
+        {product.image ? (
+          <img
             src={product.image}
             alt={productName}
-            fill
-            className="object-cover"
-            sizes="(max-width: 375px) 100vw, (max-width: 640px) 50vw, (max-width: 1024px) 33vw, (max-width: 1280px) 25vw, 20vw"
-            unoptimized
+            className="w-full h-full object-cover"
             onError={(e) => {
               console.error('Image load error:', product.image);
               e.currentTarget.style.display = 'none';
             }}
           />
+        ) : (
+          <div className="w-full h-full bg-gradient-to-br from-gray-800 to-black" />
         )}
       </div>
       <div className="p-3 min-[375px]:p-4 sm:p-6 lg:p-8 flex-1 flex flex-col">
@@ -77,4 +72,3 @@ export function ProductCard({ product }: ProductCardProps) {
     </div>
   );
 }
-

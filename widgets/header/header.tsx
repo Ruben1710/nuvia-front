@@ -107,7 +107,7 @@ export function Header({ onCartClick }: HeaderProps) {
 
         {/* Mobile Menu - Full Screen */}
         {isMenuOpen && (
-          <div className="md:hidden fixed inset-0 bg-black z-40 overflow-hidden h-screen">
+          <div className="lg:hidden fixed inset-0 bg-black z-40 overflow-hidden h-screen">
             <nav className="flex flex-col items-center justify-center h-full gap-4 min-[375px]:gap-5 sm:gap-6 px-3 min-[375px]:px-4 pt-16 min-[375px]:pt-0">
               <NavLink 
                 href="/" 
