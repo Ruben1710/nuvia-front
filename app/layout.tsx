@@ -27,10 +27,12 @@ export const metadata: Metadata = {
     siteName: 'Nuvia Print',
     images: [
       {
-        url: '/opengraph-image.png',
+        url: 'https://nuviaprint.art/opengraph-image.png',
+        secureUrl: 'https://nuviaprint.art/opengraph-image.png',
         width: 1200,
         height: 630,
         alt: 'Nuvia Print Preview',
+        type: 'image/png',
       },
     ],
     locale: 'en_US',
