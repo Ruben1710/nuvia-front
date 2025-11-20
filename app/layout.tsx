@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     siteName: 'Nuvia Print',
     images: [
       {
-        url: '/opengraph-image.png',
+        url: 'https://nuviaprint.art/opengraph-image.png',
         width: 1200,
         height: 630,
         alt: 'Nuvia Print Preview',
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Nuvia Print — Custom Gifts & Personalized Products',
     description: 'Personalized mugs, T-shirts, aluminum prints, phone cases and more. Custom gifts with high-quality printing.',
-    images: ['/opengraph-image.png'],
+    images: ['https://nuviaprint.art/opengraph-image.png'],
   },
   icons: {
     icon: [
@@ -38,6 +38,9 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+  },
+  alternates: {
+    canonical: 'https://nuviaprint.art',
   },
 };
 
