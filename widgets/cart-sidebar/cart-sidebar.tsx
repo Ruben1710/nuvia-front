@@ -40,20 +40,20 @@ export function CartSidebar({ isOpen, onClose }: CartSidebarProps) {
 
       {/* Sidebar */}
       <div
-        className={`fixed top-0 right-0 h-screen w-full sm:w-96 bg-white z-50 transform transition-transform duration-300 ease-in-out shadow-2xl ${
+        className={`fixed top-0 right-0 bottom-0 w-full sm:w-96 bg-white z-50 transform transition-transform duration-300 ease-in-out shadow-2xl flex flex-col ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
         {/* Header */}
-        <div className="bg-gray-100 px-4 py-4 flex items-center justify-between border-b">
-          <h2 className="text-lg font-semibold text-black">{t('title')}</h2>
+        <div className="bg-gray-100 px-3 min-[375px]:px-4 py-3 min-[375px]:py-4 flex items-center justify-between border-b">
+          <h2 className="text-base min-[375px]:text-lg font-semibold text-black">{t('title')}</h2>
           <button
             onClick={onClose}
-            className="text-black hover:text-gray-600 transition-colors"
+            className="text-black hover:text-gray-600 active:text-gray-800 transition-colors p-1 touch-manipulation"
             aria-label="Close cart"
           >
             <svg
-              className="w-6 h-6"
+              className="w-5 h-5 min-[375px]:w-6 min-[375px]:h-6"
               fill="none"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -67,7 +67,7 @@ export function CartSidebar({ isOpen, onClose }: CartSidebarProps) {
         </div>
 
         {/* Content */}
-        <div className="flex flex-col h-[calc(100vh-140px)]">
+        <div className="flex flex-col flex-1 overflow-hidden">
           {items.length === 0 ? (
             <div className="flex-1 flex items-center justify-center bg-gray-50">
               <p className="text-gray-500 text-center px-4">{t('empty')}</p>
@@ -80,12 +80,13 @@ export function CartSidebar({ isOpen, onClose }: CartSidebarProps) {
                     key={item.id}
                     className="bg-white rounded-lg p-4 flex gap-4 shadow-sm"
                   >
-                    <div className="relative w-20 h-20 bg-gray-200 rounded flex-shrink-0">
+                    <div className="relative w-16 h-16 min-[375px]:w-20 min-[375px]:h-20 bg-gray-200 rounded flex-shrink-0">
                       {item.image && (
                         <Image
                           src={item.image}
                           alt={item.name}
                           fill
+                          sizes="80px"
                           className="object-cover rounded"
                           unoptimized
                           onError={(e) => {

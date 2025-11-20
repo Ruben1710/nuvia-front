@@ -271,19 +271,19 @@ export function OrderPage() {
   }
 
   return (
-    <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-16">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 text-white text-center">
+    <div className="container mx-auto px-3 min-[375px]:px-4 sm:px-6 lg:px-8 xl:px-12 py-6 min-[375px]:py-8 sm:py-12 md:py-16 lg:py-20">
+      <div className="max-w-6xl mx-auto">
+        <h1 className="text-xl min-[375px]:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-2.5 min-[375px]:mb-3 sm:mb-4 lg:mb-6 text-white text-center px-2">
           {t('title')}
         </h1>
-        <p className="text-base sm:text-lg md:text-xl text-gray-400 mb-6 sm:mb-8 text-center">
+        <p className="text-sm min-[375px]:text-base sm:text-lg md:text-xl lg:text-2xl text-gray-400 mb-5 min-[375px]:mb-6 sm:mb-8 lg:mb-10 text-center px-2 max-w-3xl mx-auto">
           {t('description')}
         </p>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 min-[375px]:gap-6 sm:gap-8 lg:gap-12 xl:gap-16">
           {/* Форма заказа */}
-          <div className="bg-gray-900 rounded-lg p-6 sm:p-8 border border-gray-800">
-            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+          <div className="bg-gray-900 rounded-lg p-4 min-[375px]:p-5 sm:p-6 md:p-8 border border-gray-800">
+            <form onSubmit={handleSubmit} className="space-y-3 min-[375px]:space-y-4 sm:space-y-5 md:space-y-6">
               {/* Имя */}
               <div>
                 <label htmlFor="name" className="block text-sm font-semibold text-white mb-2">
@@ -411,9 +411,9 @@ export function OrderPage() {
           </div>
 
           {/* Корзина */}
-          <div className="bg-gray-900 rounded-lg p-6 sm:p-8 border border-gray-800">
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="text-xl font-bold text-white">{t('orderItems')}</h2>
+          <div className="bg-gray-900 rounded-lg p-4 min-[375px]:p-5 sm:p-6 md:p-8 border border-gray-800">
+            <div className="flex items-center justify-between mb-3 min-[375px]:mb-4">
+              <h2 className="text-lg min-[375px]:text-xl font-bold text-white">{t('orderItems')}</h2>
               {items.length > 0 && (
                 <div className="flex gap-2">
                   <button

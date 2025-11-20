@@ -166,14 +166,14 @@ export function ProductDetailPage({ productId }: ProductDetailPageProps) {
   };
 
   return (
-    <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-16">
+    <div className="container mx-auto px-3 min-[375px]:px-4 sm:px-6 lg:px-8 xl:px-12 py-6 min-[375px]:py-8 sm:py-12 md:py-16 lg:py-20">
       {/* Back Button */}
       <button
         onClick={() => router.push(`/${locale}/products`)}
-        className="mb-6 flex items-center gap-2 text-white hover:text-gray-300 transition-colors"
+        className="mb-4 min-[375px]:mb-5 sm:mb-6 lg:mb-8 flex items-center gap-1.5 min-[375px]:gap-2 text-white hover:text-gray-300 active:text-gray-400 transition-colors text-sm min-[375px]:text-base lg:text-lg"
       >
         <svg
-          className="w-5 h-5"
+          className="w-4 h-4 min-[375px]:w-5 min-[375px]:h-5 lg:w-6 lg:h-6"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -186,7 +186,7 @@ export function ProductDetailPage({ productId }: ProductDetailPageProps) {
         <span>{t('backToProducts')}</span>
       </button>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 min-[375px]:gap-6 sm:gap-8 lg:gap-12 xl:gap-16">
         {/* Product Images Slider */}
         <div>
           {product.images && product.images.length > 0 ? (
@@ -202,22 +202,22 @@ export function ProductDetailPage({ productId }: ProductDetailPageProps) {
         </div>
 
         {/* Product Info */}
-        <div className="space-y-4 sm:space-y-6">
+        <div className="space-y-4 min-[375px]:space-y-5 sm:space-y-6 lg:space-y-8">
           <div>
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4">{productName}</h1>
-            <p className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6">
+            <h1 className="text-xl min-[375px]:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-2.5 min-[375px]:mb-3 sm:mb-4 lg:mb-6">{productName}</h1>
+            <p className="text-lg min-[375px]:text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-white mb-3 min-[375px]:mb-4 sm:mb-6 lg:mb-8">
               {currentPrice.toFixed(0)} ֏
             </p>
           </div>
 
-          <div className="border-t border-gray-800 pt-4 sm:pt-6">
-            <h2 className="text-lg sm:text-xl font-semibold text-white mb-3 sm:mb-4">{t('productDescription')}</h2>
-            <p className="text-gray-400 text-sm sm:text-base leading-relaxed">{productDescription}</p>
+          <div className="border-t border-gray-800 pt-4 min-[375px]:pt-5 sm:pt-6 lg:pt-8">
+            <h2 className="text-base min-[375px]:text-lg sm:text-xl lg:text-2xl font-semibold text-white mb-2.5 min-[375px]:mb-3 sm:mb-4 lg:mb-6">{t('productDescription')}</h2>
+            <p className="text-gray-400 text-sm min-[375px]:text-base lg:text-lg xl:text-xl leading-relaxed">{productDescription}</p>
           </div>
 
           {/* Product Filters */}
           {product.filters && (
-            <div className="border-t border-gray-800 pt-4 sm:pt-6">
+            <div className="border-t border-gray-800 pt-4 min-[375px]:pt-5 sm:pt-6">
               <ProductFilters
                 filters={product.filters}
                 basePrice={product.price}
@@ -227,39 +227,39 @@ export function ProductDetailPage({ productId }: ProductDetailPageProps) {
             </div>
           )}
 
-          <div className="border-t border-gray-800 pt-4 sm:pt-6">
+          <div className="border-t border-gray-800 pt-4 min-[375px]:pt-5 sm:pt-6">
             {/* Special Notes Textarea */}
-            <div className="mb-4 sm:mb-6">
-              <label className="block text-sm font-semibold text-white mb-2">
+            <div className="mb-4 min-[375px]:mb-5 sm:mb-6">
+              <label className="block text-xs min-[375px]:text-sm font-semibold text-white mb-1.5 min-[375px]:mb-2">
                 {t('specialNotes')}
               </label>
               <textarea
                 value={specialNotes}
                 onChange={(e) => setSpecialNotes(e.target.value)}
                 rows={4}
-                className="w-full px-4 py-2 bg-gray-800 text-white border border-gray-700 rounded-lg focus:outline-none focus:border-white resize-none"
+                className="w-full px-3 min-[375px]:px-4 py-2 text-sm min-[375px]:text-base bg-gray-800 text-white border border-gray-700 rounded-lg focus:outline-none focus:border-white resize-none"
                 placeholder={t('specialNotesPlaceholder')}
               />
             </div>
 
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 min-[375px]:gap-3 sm:gap-4">
               <button 
                 onClick={handleOrder}
-                className="flex-1 px-6 sm:px-8 py-3 sm:py-4 bg-white text-black font-bold text-base sm:text-lg rounded-lg hover:bg-gray-200 transition-colors"
+                className="flex-1 px-5 min-[375px]:px-6 sm:px-8 py-2.5 min-[375px]:py-3 sm:py-4 bg-white text-black font-bold text-sm min-[375px]:text-base sm:text-lg rounded-lg hover:bg-gray-200 active:bg-gray-300 transition-colors"
               >
                 {t('orderButton')}
               </button>
               <button 
                 onClick={handleAddToCart}
-                className="flex-1 sm:flex-none px-6 py-3 sm:py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-black transition-colors text-base sm:text-lg"
+                className="flex-1 sm:flex-none px-5 min-[375px]:px-6 py-2.5 min-[375px]:py-3 sm:py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-black active:bg-gray-100 transition-colors text-sm min-[375px]:text-base sm:text-lg"
               >
                 {t('addToCart')}
               </button>
             </div>
           </div>
 
-          <div className="border-t border-gray-800 pt-4 sm:pt-6">
-            <div className="space-y-2 text-xs sm:text-sm text-gray-400">
+          <div className="border-t border-gray-800 pt-4 min-[375px]:pt-5 sm:pt-6">
+            <div className="space-y-1.5 min-[375px]:space-y-2 text-xs min-[375px]:text-sm text-gray-400">
               <p><strong className="text-white">{t('category')}:</strong> {product.category}</p>
               <p><strong className="text-white">{t('productId')}:</strong> #{product.id}</p>
             </div>

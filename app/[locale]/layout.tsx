@@ -30,7 +30,7 @@ export default async function LocaleLayout({
   return (
     <NextIntlClientProvider messages={messages}>
       <CartProvider>
-        <div className={`${inter.className} min-h-screen flex flex-col`}>
+        <div className={`${inter.className} flex flex-col`}>
           <AppWrapper>{children}</AppWrapper>
         </div>
       </CartProvider>

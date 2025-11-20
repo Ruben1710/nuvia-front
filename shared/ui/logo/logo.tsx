@@ -14,7 +14,7 @@ export function Logo() {
         alt="NUVIA"
         width={120}
         height={60}
-        className="object-contain w-20 sm:w-24 md:w-32 h-auto"
+        className="object-contain w-20 sm:w-24 xl:w-32 h-auto"
         priority
       />
     </Link>

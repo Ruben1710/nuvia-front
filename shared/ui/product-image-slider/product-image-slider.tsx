@@ -62,13 +62,14 @@ export function ProductImageSlider({
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-3 min-[375px]:space-y-4">
       {/* Основное большое изображение */}
       <div className="relative w-full aspect-square bg-gray-800 rounded-lg overflow-hidden group">
         <Image
           src={currentImage.url}
           alt={`Product image ${currentIndex + 1}`}
           fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw"
           unoptimized
           className="object-cover"
           priority
@@ -79,24 +80,24 @@ export function ProductImageSlider({
           <>
             <button
               onClick={goToPrevious}
-              className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all opacity-0 group-hover:opacity-100"
+              className="absolute left-2 min-[375px]:left-3 sm:left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 active:bg-black/80 text-white p-1.5 min-[375px]:p-2 rounded-full transition-all opacity-0 group-hover:opacity-100 touch-manipulation"
               aria-label="Previous image"
             >
-              <ChevronLeft className="w-6 h-6" />
+              <ChevronLeft className="w-4 h-4 min-[375px]:w-5 min-[375px]:h-5 sm:w-6 sm:h-6" />
             </button>
             <button
               onClick={goToNext}
-              className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all opacity-0 group-hover:opacity-100"
+              className="absolute right-2 min-[375px]:right-3 sm:right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 active:bg-black/80 text-white p-1.5 min-[375px]:p-2 rounded-full transition-all opacity-0 group-hover:opacity-100 touch-manipulation"
               aria-label="Next image"
             >
-              <ChevronRight className="w-6 h-6" />
+              <ChevronRight className="w-4 h-4 min-[375px]:w-5 min-[375px]:h-5 sm:w-6 sm:h-6" />
             </button>
           </>
         )}
 
         {/* Индикатор текущего изображения */}
         {filteredImages.length > 1 && (
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/50 text-white px-3 py-1 rounded-full text-sm">
+          <div className="absolute bottom-3 min-[375px]:bottom-4 left-1/2 -translate-x-1/2 bg-black/50 text-white px-2.5 min-[375px]:px-3 py-1 rounded-full text-xs min-[375px]:text-sm">
             {currentIndex + 1} / {filteredImages.length}
           </div>
         )}
@@ -104,21 +105,22 @@ export function ProductImageSlider({
 
       {/* Миниатюры внизу */}
       {filteredImages.length > 1 && (
-        <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 gap-2">
+        <div className="grid grid-cols-4 min-[375px]:grid-cols-5 sm:grid-cols-5 md:grid-cols-6 gap-1.5 min-[375px]:gap-2">
           {filteredImages.map((image, index) => (
             <button
               key={index}
               onClick={() => goToImage(index)}
-              className={`relative aspect-square rounded-lg overflow-hidden border-2 transition-all ${
+              className={`relative aspect-square rounded-lg overflow-hidden border-2 transition-all touch-manipulation ${
                 index === currentIndex
                   ? 'border-white scale-105'
-                  : 'border-transparent hover:border-gray-500'
+                  : 'border-transparent hover:border-gray-500 active:border-gray-400'
               }`}
             >
               <Image
                 src={image.url}
                 alt={`Thumbnail ${index + 1}`}
                 fill
+                sizes="(max-width: 375px) 20vw, (max-width: 640px) 20vw, (max-width: 1024px) 16vw, 13vw"
                 unoptimized
                 className="object-cover"
               />

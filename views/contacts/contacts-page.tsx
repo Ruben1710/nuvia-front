@@ -151,22 +151,22 @@ export function ContactsPage() {
   };
 
   return (
-    <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-16">
+    <div className="container mx-auto px-3 min-[375px]:px-4 sm:px-6 lg:px-8 xl:px-12 py-6 min-[375px]:py-8 sm:py-12 md:py-16 lg:py-20">
       {/* Header */}
-      <div className="text-center mb-12 sm:mb-16">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 animate-fade-in">
+      <div className="text-center mb-8 min-[375px]:mb-10 sm:mb-12 md:mb-16 lg:mb-20">
+        <h1 className="text-2xl min-[375px]:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-3 min-[375px]:mb-4 lg:mb-6 animate-fade-in px-2">
           {t('title')}
         </h1>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 min-[375px]:gap-6 sm:gap-8 md:gap-12 lg:gap-16 xl:gap-20">
         {/* Contact Form */}
-        <div className="bg-gray-900 rounded-xl p-6 sm:p-8 border border-gray-800 shadow-lg hover:shadow-white/10 transition-all duration-300 animate-slide-in-left">
-          <h2 className="text-xl sm:text-2xl font-bold text-white mb-6 flex items-center gap-2">
-            <FaEnvelope className="text-blue-400" />
+        <div className="bg-gray-900 rounded-lg min-[375px]:rounded-xl p-4 min-[375px]:p-5 sm:p-6 md:p-8 border border-gray-800 shadow-lg hover:shadow-white/10 transition-all duration-300 animate-slide-in-left">
+          <h2 className="text-lg min-[375px]:text-xl sm:text-2xl font-bold text-white mb-4 min-[375px]:mb-5 sm:mb-6 flex items-center gap-1.5 min-[375px]:gap-2">
+            <FaEnvelope className="text-blue-400 w-4 h-4 min-[375px]:w-5 min-[375px]:h-5" />
             {t('description')}
           </h2>
-          <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-3 min-[375px]:space-y-4 sm:space-y-5 md:space-y-6">
             {/* Name Field */}
             <div>
               <label htmlFor="name" className="block text-sm font-semibold text-white mb-2">
@@ -356,7 +356,9 @@ export function ContactsPage() {
             </h2>
             <div className="flex flex-col sm:flex-row gap-4">
               <a
-                href="#"
+                href="https://www.instagram.com/nuvia_print/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-3 text-gray-400 hover:text-pink-500 transition-all duration-300 p-3 rounded-lg hover:bg-gray-800 group"
               >
                 <div className="bg-white/10 p-2 rounded-lg group-hover:bg-pink-500/20 transition-colors">
@@ -365,7 +367,9 @@ export function ContactsPage() {
                 <span className="text-base sm:text-lg font-medium">{t('instagram')}</span>
               </a>
               <a
-                href="#"
+                href="https://www.facebook.com/profile.php?id=61583206950230"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-3 text-gray-400 hover:text-blue-500 transition-all duration-300 p-3 rounded-lg hover:bg-gray-800 group"
               >
                 <div className="bg-white/10 p-2 rounded-lg group-hover:bg-blue-500/20 transition-colors">

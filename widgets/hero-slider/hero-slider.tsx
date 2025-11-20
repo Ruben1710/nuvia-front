@@ -114,13 +114,13 @@ export function HeroSlider() {
 
   return (
     <div 
-      className="group relative w-full h-[600px] sm:h-[700px] md:h-[800px] overflow-hidden touch-pan-y"
+      className="group relative w-full min-h-[270px] min-[375px]:min-h-[280px] sm:min-h-[550px] md:min-h-[500px] lg:min-h-[700px] xl:min-h-[800px] 2xl:min-h-[1150px] overflow-hidden touch-pan-y"
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
     >
       {/* Slides */}
-      <div className="relative w-full h-full">
+      <div className="relative w-full h-full min-h-[270px] min-[375px]:min-h-[280px] sm:min-h-[550px] md:min-h-[500px] lg:min-h-[700px] xl:min-h-[800px] 2xl:min-h-[1150px]">
         {slides.map((slide, index) => (
             <div
               key={slide.id}
@@ -128,37 +128,31 @@ export function HeroSlider() {
                 index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
               }`}
             >
-            <div className="relative w-full h-full">
+            <div className="relative w-full h-full flex items-center justify-center">
               {/* Background: image or gradient with NUVIA */}
               {slide.image ? (
-                <div className="relative w-full h-full overflow-hidden">
-                  <Image
-                    src={slide.image}
-                    unoptimized
-                    alt={slide.categoryName}
-                    fill
-                    className="object-cover"
-                    style={{ 
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      objectPosition: 'center'
-                    }}
-                    priority={index === 0}
-                  />
-                </div>
+                <Image
+                  src={slide.image}
+                  alt={slide.categoryName}
+                  width={1920}
+                  height={1150}
+                  className="w-full h-full object-cover object-center absolute inset-0"
+                  unoptimized
+                  priority={index === 0}
+                  sizes="100vw"
+                />
               ) : (
                 <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-900">
                   <div className="absolute inset-0 flex items-center justify-center opacity-20">
-                    <div className="text-white text-9xl font-bold">NUVIA</div>
+                    <div className="text-white text-4xl min-[375px]:text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold">NUVIA</div>
                   </div>
                 </div>
               )}
-              <div className="absolute inset-0 bg-black/60" />
-              <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 sm:px-6">
+              <div className="absolute inset-0 bg-black/60 z-10" />
+              <div className="relative z-20 flex flex-col items-center justify-center text-center px-3 min-[375px]:px-4 sm:px-6 lg:px-8 xl:px-12 w-full h-full">
                 <h2 
                   key={`title-${slide.id}-${currentSlide}`}
-                  className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-6 sm:mb-8"
+                  className="text-2xl min-[375px]:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold text-white mb-4 min-[375px]:mb-6 sm:mb-8 lg:mb-10 drop-shadow-2xl"
                 >
                   {slide.categoryName}
                 </h2>
@@ -168,7 +162,7 @@ export function HeroSlider() {
                     e.stopPropagation();
                     handleOrder(slide.categorySlug);
                   }}
-                  className="px-6 sm:px-8 py-3 sm:py-4 bg-white text-black font-bold text-base sm:text-lg rounded-lg hover:bg-gray-200 hover:shadow-lg hover:scale-105 transition-all duration-300 relative z-10"
+                  className="px-5 min-[375px]:px-6 sm:px-8 lg:px-10 xl:px-12 py-2.5 min-[375px]:py-3 sm:py-4 lg:py-5 bg-white text-black font-bold text-sm min-[375px]:text-base sm:text-lg lg:text-xl rounded-lg hover:bg-gray-200 hover:shadow-lg hover:scale-105 transition-all duration-300"
                 >
                   {t('orderButton')}
                 </button>
@@ -178,8 +172,8 @@ export function HeroSlider() {
         ))}
       </div>
 
-      {/* Dots indicator - Show on hover */}
-      <div className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+      {/* Dots indicator - Always visible on mobile, show on hover for desktop */}
+      <div className="absolute bottom-3 min-[375px]:bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 flex gap-1.5 min-[375px]:gap-2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300 z-20">
         {slides.map((_, index) => (
           <button
             key={index}
@@ -187,27 +181,43 @@ export function HeroSlider() {
               e.stopPropagation();
               goToSlide(index);
             }}
-            className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all cursor-pointer ${
+            className={`w-1.5 h-1.5 min-[375px]:w-2 min-[375px]:h-2 sm:w-3 sm:h-3 rounded-full transition-all cursor-pointer touch-manipulation ${
               index === currentSlide
-                ? 'bg-white w-6 sm:w-8'
-                : 'bg-white/50 hover:bg-white/75'
+                ? 'bg-white w-5 min-[375px]:w-6 sm:w-8'
+                : 'bg-white/50 hover:bg-white/75 active:bg-white/90'
             }`}
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}
       </div>
 
-      {/* Navigation arrows - Hidden on mobile */}
+      {/* Navigation arrows - Always visible on mobile, hidden on larger screens until hover */}
       <button
         onClick={() => goToSlide((currentSlide - 1 + slides.length) % slides.length)}
-        className="hidden sm:block absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 text-white/80 hover:text-white text-3xl sm:text-4xl transition-colors z-10"
+        className="block sm:hidden absolute left-2 top-1/2 transform -translate-y-1/2 text-white/90 hover:text-white active:text-white text-3xl transition-colors z-30 bg-black/30 hover:bg-black/50 rounded-full w-10 h-10 flex items-center justify-center touch-manipulation"
         aria-label="Previous slide"
       >
         ‹
       </button>
       <button
         onClick={() => goToSlide((currentSlide + 1) % slides.length)}
-        className="hidden sm:block absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 text-white/80 hover:text-white text-3xl sm:text-4xl transition-colors z-10"
+        className="block sm:hidden absolute right-2 top-1/2 transform -translate-y-1/2 text-white/90 hover:text-white active:text-white text-3xl transition-colors z-30 bg-black/30 hover:bg-black/50 rounded-full w-10 h-10 flex items-center justify-center touch-manipulation"
+        aria-label="Next slide"
+      >
+        ›
+      </button>
+      
+      {/* Navigation arrows for desktop - Show on hover */}
+      <button
+        onClick={() => goToSlide((currentSlide - 1 + slides.length) % slides.length)}
+        className="hidden sm:block absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 text-white/80 hover:text-white text-3xl sm:text-4xl transition-colors z-30 opacity-0 group-hover:opacity-100"
+        aria-label="Previous slide"
+      >
+        ‹
+      </button>
+      <button
+        onClick={() => goToSlide((currentSlide + 1) % slides.length)}
+        className="hidden sm:block absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 text-white/80 hover:text-white text-3xl sm:text-4xl transition-colors z-30 opacity-0 group-hover:opacity-100"
         aria-label="Next slide"
       >
         ›

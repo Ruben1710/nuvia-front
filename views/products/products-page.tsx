@@ -55,27 +55,27 @@ export function ProductsPage() {
   }
 
   return (
-    <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-16">
+    <div className="container mx-auto px-3 min-[375px]:px-4 sm:px-6 lg:px-8 xl:px-12 py-6 min-[375px]:py-8 sm:py-12 md:py-16 lg:py-20">
       {/* Header */}
-      <div className="text-center mb-12 sm:mb-16">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 animate-fade-in">
+      <div className="text-center mb-8 min-[375px]:mb-10 sm:mb-12 md:mb-16 lg:mb-20">
+        <h1 className="text-2xl min-[375px]:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-3 min-[375px]:mb-4 lg:mb-6 animate-fade-in px-2">
           {t('title')}
         </h1>
-        <p className="text-lg sm:text-xl text-gray-400 animate-fade-in-delay">
+        <p className="text-base min-[375px]:text-lg sm:text-xl lg:text-2xl text-gray-400 animate-fade-in-delay px-2 max-w-3xl mx-auto">
           {t('description')}
         </p>
       </div>
 
       {/* Category Filter */}
       {categories.length > 0 && (
-        <div className="mb-8 sm:mb-12">
-          <div className="flex flex-wrap gap-3 sm:gap-4 justify-center">
+        <div className="mb-6 min-[375px]:mb-8 sm:mb-12">
+          <div className="flex flex-wrap gap-2 min-[375px]:gap-3 sm:gap-4 justify-center px-2">
             <button
               onClick={() => setSelectedCategory(null)}
-              className={`px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold transition-all duration-300 ${
+              className={`px-3 min-[375px]:px-4 sm:px-6 py-1.5 min-[375px]:py-2 sm:py-3 rounded-lg font-semibold text-xs min-[375px]:text-sm sm:text-base transition-all duration-300 ${
                 selectedCategory === null
-                  ? 'bg-white text-black hover:bg-gray-200'
-                  : 'bg-gray-800 text-white hover:bg-gray-700'
+                  ? 'bg-white text-black hover:bg-gray-200 active:bg-gray-300'
+                  : 'bg-gray-800 text-white hover:bg-gray-700 active:bg-gray-600'
               }`}
             >
               {t('all') || 'Все'}
@@ -86,10 +86,10 @@ export function ProductsPage() {
                 <button
                   key={category.id}
                   onClick={() => setSelectedCategory(category.slug)}
-                  className={`px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold transition-all duration-300 ${
+                  className={`px-3 min-[375px]:px-4 sm:px-6 py-1.5 min-[375px]:py-2 sm:py-3 rounded-lg font-semibold text-xs min-[375px]:text-sm sm:text-base transition-all duration-300 ${
                     selectedCategory === category.slug
-                      ? 'bg-white text-black hover:bg-gray-200'
-                      : 'bg-gray-800 text-white hover:bg-gray-700'
+                      ? 'bg-white text-black hover:bg-gray-200 active:bg-gray-300'
+                      : 'bg-gray-800 text-white hover:bg-gray-700 active:bg-gray-600'
                   }`}
                 >
                   {categoryName}
@@ -102,11 +102,11 @@ export function ProductsPage() {
 
       {/* Products Grid */}
       {filteredProducts.length === 0 ? (
-        <div className="text-center text-gray-400 py-12">
-          <p>{t('noProducts') || 'Нет товаров'}</p>
+        <div className="text-center text-gray-400 py-8 min-[375px]:py-10 sm:py-12 lg:py-16 px-2">
+          <p className="text-sm min-[375px]:text-base lg:text-lg">{t('noProducts') || 'Нет товаров'}</p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 min-[375px]:gap-5 sm:gap-6 md:gap-8 lg:gap-10">
           {filteredProducts.map((product, index) => (
             <div
               key={product.id}
