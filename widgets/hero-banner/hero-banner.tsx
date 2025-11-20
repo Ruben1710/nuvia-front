@@ -16,7 +16,7 @@ export function HeroBanner() {
   };
 
   return (
-    <div className="relative w-full min-h-[270px] min-[375px]:min-h-[280px] sm:min-h-[550px] md:min-h-[500px] lg:min-h-[700px] xl:min-h-[800px] 2xl:min-h-[1150px] overflow-hidden">
+    <div className="relative w-full min-h-[350px] min-[375px]:min-h-[400px] sm:min-h-[550px] md:min-h-[500px] lg:min-h-[700px] xl:min-h-[800px] 2xl:min-h-[1150px] overflow-hidden flex column justify-center items-center">
       {/* <div className="absolute inset-0"> */}
         {/* <Image
           src="/images/firstScreen.png"
@@ -31,7 +31,7 @@ export function HeroBanner() {
   alt="NUVIA"
   width={1920}
   height={1150}
-  className="w-full h-auto object-cover object-top absolute inset-0"
+  className="w-full h-auto object-cover object-top absolute inset-0 m-auto"
 />
         <div className="absolute inset-0 bg-black/40" />
       {/* </div> */}
