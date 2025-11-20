@@ -1,12 +1,12 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import Image from 'next/image';
 import { useWorksStore } from '@/shared/store/worksStore';
 import { useCategoriesStore } from '@/shared/store/categoriesStore';
 import { CategoryFilter } from '@/shared/ui/category-filter';
-import { X, ExternalLink } from 'lucide-react';
+import { X } from 'lucide-react';
 
 export function WorksPage() {
   const t = useTranslations('works');
@@ -76,19 +76,38 @@ export function WorksPage() {
     setSelectedImage(null);
   };
 
+  // Закрытие модалки по Escape
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    };
+
+    if (selectedImage) {
+      document.addEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'hidden';
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'unset';
+    };
+  }, [selectedImage]);
+
   if (loading) {
     return (
-      <div className="container mx-auto px-3 min-[375px]:px-4 sm:px-6 lg:px-8 xl:px-12 pt-16 min-[375px]:pt-20 sm:pt-24 md:pt-28 lg:pt-32 pb-8 sm:pb-16">
+      <div className="container mx-auto px-4 py-10 md:py-16">
         <div className="text-white text-center">Загрузка...</div>
       </div>
     );
   }
 
   return (
-    <div className="container mx-auto px-3 min-[375px]:px-4 sm:px-6 lg:px-8 xl:px-12 pt-16 min-[375px]:pt-20 sm:pt-24 md:pt-28 lg:pt-32 pb-6 min-[375px]:pb-8 sm:pb-12 md:pb-16 lg:pb-20">
+    <div className="container mx-auto px-4 py-10 md:py-16">
       {/* Header */}
-      <div className="text-center mb-8 min-[375px]:mb-10 sm:mb-12 md:mb-16 lg:mb-20">
-        <h1 className="text-2xl min-[375px]:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-3 min-[375px]:mb-4 lg:mb-6 animate-fade-in px-2">
+      <div className="text-center mb-6 min-[375px]:mb-8 sm:mb-10">
+        <h1 className="text-2xl min-[375px]:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white animate-fade-in px-2">
           {t('title')}
         </h1>
       </div>
@@ -100,47 +119,41 @@ export function WorksPage() {
         onSelect={setSelectedCategory}
       />
 
-      {/* Masonry Grid */}
+      {/* Grid with equal sized cards */}
       {filteredImages.length === 0 ? (
         <div className="text-center text-gray-400 py-8 min-[375px]:py-10 sm:py-12 px-2">
           <p className="text-sm min-[375px]:text-base">{t('noImages')}</p>
         </div>
       ) : (
-        <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5 2xl:columns-6 gap-3 min-[375px]:gap-4 sm:gap-5 md:gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 min-[375px]:gap-5 sm:gap-6 md:gap-8">
           {filteredImages.map((item, index) => (
             <div
               key={`${item.workId}-${index}`}
-              className="mb-3 min-[375px]:mb-4 sm:mb-5 md:mb-6 break-inside-avoid group cursor-pointer relative overflow-hidden rounded-lg min-[375px]:rounded-xl"
+              className="group cursor-pointer relative overflow-hidden rounded-lg min-[375px]:rounded-xl bg-gray-800 animate-fade-in"
+              style={{ animationDelay: `${index * 0.05}s` }}
               onClick={() => handleImageClick(item)}
             >
-              <div className="relative w-full overflow-hidden rounded-lg min-[375px]:rounded-xl bg-gray-800">
-                <Image
+              {/* Card with fixed aspect ratio */}
+              <div className="relative w-full aspect-[4/5] overflow-hidden rounded-lg min-[375px]:rounded-xl bg-gray-800">
+                <img
                   src={item.image}
                   alt={item.name}
-                  width={400}
-                  height={600}
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
-                  className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"
-                  unoptimized
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                   onError={(e) => {
                     console.error('Image load error:', item.image);
                     e.currentTarget.style.display = 'none';
                   }}
                 />
-                {/* Overlay */}
+                {/* Overlay on hover */}
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/60 transition-all duration-300 flex flex-col items-center justify-center p-3 min-[375px]:p-4 opacity-0 group-hover:opacity-100">
-                  <h3 className="text-white text-base min-[375px]:text-lg sm:text-xl font-bold mb-1.5 min-[375px]:mb-2 text-center">
+                  <h3 className="text-white text-base min-[375px]:text-lg sm:text-xl font-bold mb-1.5 min-[375px]:mb-2 text-center px-2">
                     {item.name}
                   </h3>
                   {item.description && (
-                    <p className="text-gray-300 text-xs min-[375px]:text-sm sm:text-base mb-3 min-[375px]:mb-4 text-center line-clamp-2 px-2">
+                    <p className="text-gray-300 text-xs min-[375px]:text-sm sm:text-base text-center line-clamp-2 px-2">
                       {item.description}
                     </p>
                   )}
-                  <button className="px-3 min-[375px]:px-4 sm:px-6 py-1.5 min-[375px]:py-2 sm:py-3 bg-white text-black font-semibold text-xs min-[375px]:text-sm sm:text-base rounded-lg hover:bg-gray-200 active:bg-gray-300 transition-colors flex items-center gap-1.5 min-[375px]:gap-2">
-                    {t('details')}
-                    <ExternalLink className="w-3 h-3 min-[375px]:w-4 min-[375px]:h-4" />
-                  </button>
                 </div>
               </div>
             </div>
@@ -148,51 +161,49 @@ export function WorksPage() {
         </div>
       )}
 
-      {/* Modal */}
+      {/* Modal with scroll */}
       {selectedImage && (
         <div
-          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-2 min-[375px]:p-3 sm:p-4 animate-fade-in"
+          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-2 min-[375px]:p-3 sm:p-4 md:p-6 animate-fade-in"
           onClick={closeModal}
         >
           <div
-            className="relative max-w-4xl w-full"
+            className="relative max-w-4xl w-full max-h-[90vh] flex flex-col bg-gray-900 rounded-lg overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
+            {/* Close button */}
             <button
               onClick={closeModal}
               className="absolute top-2 min-[375px]:top-3 sm:top-4 right-2 min-[375px]:right-3 sm:right-4 z-10 bg-white/10 hover:bg-white/20 active:bg-white/30 text-white p-1.5 min-[375px]:p-2 rounded-full transition-colors touch-manipulation"
+              aria-label="Close modal"
             >
               <X className="w-5 h-5 min-[375px]:w-6 min-[375px]:h-6" />
             </button>
-            <div className="relative w-full h-full bg-gray-900 rounded-lg overflow-hidden">
-              <Image
-                src={selectedImage.image}
-                alt={selectedImage.name}
-                width={1200}
-                height={1200}
-                sizes="100vw"
-                className="w-full h-auto max-h-[600px] min-[375px]:max-h-[700px] sm:max-h-[800px] md:max-h-[900px] object-contain"
-                unoptimized
-                onError={(e) => {
-                  console.error('Modal image load error:', selectedImage.image);
-                }}
-              />
-              <div className="p-3 min-[375px]:p-4 sm:p-6 bg-gray-900">
-                <h3 className="text-white text-lg min-[375px]:text-xl sm:text-2xl font-bold mb-1.5 min-[375px]:mb-2">
+
+            {/* Scrollable content */}
+            <div className="overflow-y-auto flex-1">
+              {/* Image */}
+              <div className="relative w-full bg-gray-800 flex items-center justify-center p-2 min-[375px]:p-4">
+                <img
+                  src={selectedImage.image}
+                  alt={selectedImage.name}
+                  className="w-full h-auto max-h-[70vh] object-contain rounded-lg"
+                  onError={(e) => {
+                    console.error('Modal image load error:', selectedImage.image);
+                  }}
+                />
+              </div>
+
+              {/* Content */}
+              <div className="p-4 min-[375px]:p-5 sm:p-6 bg-gray-900">
+                <h3 className="text-white text-lg min-[375px]:text-xl sm:text-2xl font-bold mb-2 min-[375px]:mb-3">
                   {selectedImage.name}
                 </h3>
                 {selectedImage.description && (
-                  <p className="text-gray-400 text-xs min-[375px]:text-sm sm:text-base">
+                  <p className="text-gray-400 text-sm min-[375px]:text-base sm:text-lg leading-relaxed">
                     {selectedImage.description}
                   </p>
                 )}
-                <a
-                  href={`/products`}
-                  className="inline-flex items-center gap-1.5 min-[375px]:gap-2 mt-3 min-[375px]:mt-4 text-white hover:text-gray-300 active:text-gray-400 transition-colors text-xs min-[375px]:text-sm sm:text-base"
-                >
-                  {t('viewProduct')}
-                  <ExternalLink className="w-3 h-3 min-[375px]:w-4 min-[375px]:h-4" />
-                </a>
               </div>
             </div>
           </div>
@@ -222,10 +233,27 @@ export function WorksPage() {
           -webkit-box-orient: vertical;
           overflow: hidden;
         }
+
+        /* Custom scrollbar for modal */
+        .overflow-y-auto::-webkit-scrollbar {
+          width: 8px;
+        }
+
+        .overflow-y-auto::-webkit-scrollbar-track {
+          background: rgb(31, 41, 55);
+        }
+
+        .overflow-y-auto::-webkit-scrollbar-thumb {
+          background: rgb(75, 85, 99);
+          border-radius: 4px;
+        }
+
+        .overflow-y-auto::-webkit-scrollbar-thumb:hover {
+          background: rgb(107, 114, 128);
+        }
       `}</style>
     </div>
   );
 }
 
 export default WorksPage;
-
